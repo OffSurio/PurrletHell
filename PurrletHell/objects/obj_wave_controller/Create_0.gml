@@ -5,26 +5,26 @@ enemies_per_wave_base = 3;
 enemies_alive = 0;
 enemies_pending_spawn = 0;
 
-wave_delay_timer = 90; // pequeno intervalo antes da 1ª wave
+wave_delay_timer = 90; //pequeno intervalo antes da 1ª wave
 in_between_waves = true;
 
 // Lista de tipos de inimigo disponíveis pra sortear no spawn.
-enemy_types = [obj_enemy_alface];
+enemy_types = [obj_enemy_alface, obj_enemy_tomate];
 randomise();
 
-function start_next_wave() {
+function start_next_wave(){
     wave_number++;
-    var _count = enemies_per_wave_base + (wave_number - 1) * 2; // cresce 2 por wave, ajusta como quiser
+    var _count = enemies_per_wave_base + (wave_number - 1) * 2; // cresce 2x por wave
 
     enemies_pending_spawn = _count;
     in_between_waves = false;
 
-    for (var i = 0; i < _count; i++) {
+    for (var i = 0; i < _count; i++){
         spawn_enemy();
     }
 }
 
-function spawn_enemy() {
+function spawn_enemy(){
     var _margin = 60;
 	var _posicao_valida = false;
     var _sx, _sy;

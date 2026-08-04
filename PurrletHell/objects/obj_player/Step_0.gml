@@ -17,12 +17,14 @@ if (_moving){
     _norm_v = _input_v / _len;
 }
 
+if (invuln_timer > 0) invuln_timer--;
+
 //Dash
 if (!is_dashing && keyboard_check_pressed(vk_space) && stamina >= stamina_dash_cost && !stamina_exhausted){
     is_dashing = true;
     dash_timer = 0;
     stamina -= stamina_dash_cost;
-    if (stamina <= 0) { stamina = 0; stamina_exhausted = true;}
+    if (stamina <= 0){ stamina = 0; stamina_exhausted = true;}
 
     dash_direction = _moving ? point_direction(0, 0, _norm_h, _norm_v) : image_angle;
 }
@@ -71,16 +73,16 @@ if (is_dashing){
 
     if (_sprinting){
         stamina -= stamina_drain_sprint;
-        if (stamina <= 0) { stamina = 0; stamina_exhausted = true;}
+        if (stamina <= 0){ stamina = 0; stamina_exhausted = true;}
     }
 }
 
 //Regeneração
 var _using_stamina = is_dashing || (keyboard_check(vk_shift) && _moving && !stamina_exhausted && stamina > 0);
 
-if (!_using_stamina && stamina < global.stamina_max) {
+if (!_using_stamina && stamina < global.stamina_max){
     stamina += global.stamina_regen_rate;
-    if (stamina >= global.stamina_max) {
+    if (stamina >= global.stamina_max){
         stamina = global.stamina_max;
         stamina_exhausted = false; //libera de novo ao encher 100%
     }

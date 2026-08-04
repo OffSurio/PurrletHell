@@ -1,8 +1,14 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (invuln_timer > 0 && (invuln_timer div 4) % 2 == 0){
+    // pisca a cada 4 frames enquanto imune
+}else{
+    draw_self();
+}
+
 draw_self();
 
-if (stamina_visible_timer > 0) {
+if (stamina_visible_timer > 0){
     var _pct = stamina / global.stamina_max;
     var _col = c_lime;
     if (_pct <= 0.15)      _col = c_red;
