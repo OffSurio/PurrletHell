@@ -3,7 +3,7 @@
 draw_self();
 
 if (stamina_visible_timer > 0) {
-    var _pct = stamina / stamina_max;
+    var _pct = stamina / global.stamina_max;
     var _col = c_lime;
     if (_pct <= 0.15)      _col = c_red;
     else if (_pct <= 0.35) _col = c_yellow;

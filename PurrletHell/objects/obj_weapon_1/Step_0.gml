@@ -10,7 +10,7 @@ if (instance_exists(obj_player)){
 
     // Cadência automática
     fire_timer++;
-    if (fire_timer >= fire_rate){
+    if (fire_timer >= global.fire_rate){
         fire_timer = 0;
         var _proj = instance_create_layer(x, y, "Instances", obj_projectile);
         _proj.direction = _dir;

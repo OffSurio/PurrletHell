@@ -78,16 +78,16 @@ if (is_dashing){
 //Regeneração
 var _using_stamina = is_dashing || (keyboard_check(vk_shift) && _moving && !stamina_exhausted && stamina > 0);
 
-if (!_using_stamina && stamina < stamina_max) {
-    stamina += stamina_regen_rate;
-    if (stamina >= stamina_max) {
-        stamina = stamina_max;
+if (!_using_stamina && stamina < global.stamina_max) {
+    stamina += global.stamina_regen_rate;
+    if (stamina >= global.stamina_max) {
+        stamina = global.stamina_max;
         stamina_exhausted = false; //libera de novo ao encher 100%
     }
 }
 
 //Visibilidade do anel
-if (_using_stamina || stamina < stamina_max){
+if (_using_stamina || stamina < global.stamina_max){
     stamina_visible_timer = 30; // fica visível meio segundo depois de soltar
 }else if (stamina_visible_timer > 0){
     stamina_visible_timer--;

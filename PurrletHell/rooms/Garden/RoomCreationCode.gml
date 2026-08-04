@@ -1,5 +1,4 @@
 var _thickness = 32;
-
 // Parede de cima
 var _top = instance_create_layer(0, -_thickness, "Instances", obj_wall);
 _top.image_xscale = room_width / sprite_get_width(obj_wall.sprite_index);
