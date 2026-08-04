@@ -1,19 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_tomato_grenade",
+  "%Name":"obj_enemy_pepino",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_tomato_grenade",
+  "name":"obj_enemy_pepino",
   "overriddenProperties":[],
   "parent":{
-    "name":"tomate",
-    "path":"folders/Objects/Inimigos/tomate.yy",
+    "name":"pepino",
+    "path":"folders/Objects/Inimigos/pepino.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_enemy_parent",
+    "path":"objects/obj_enemy_parent/obj_enemy_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_tomato_grenade",
-    "path":"sprites/spr_tomato_grenade/spr_tomato_grenade.yy",
+    "name":"spr_enemy_pepino",
+    "path":"sprites/spr_enemy_pepino/spr_enemy_pepino.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -5,7 +5,7 @@ if (!instance_exists(obj_player)) exit;
 var _dist = point_distance(x, y, obj_player.x, obj_player.y);
 var _dir_to_player = point_direction(x, y, obj_player.x, obj_player.y);
 
-image_angle = _dir_to_player; // vira de frente pro player sempre
+if (obj_player.x < x) { image_xscale = -1; } else { image_xscale = 1; } // muda o lado da sprite
 
 burst_shots_total = irandom_range(1,3);
 

@@ -10,8 +10,8 @@
   "name":"obj_tomato_puddle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objects/Inimigos.yy",
+    "name":"tomate",
+    "path":"folders/Objects/Inimigos/tomate.yy",
   },
   "parentObjectId":null,
   "persistent":false,

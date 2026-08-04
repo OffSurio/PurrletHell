@@ -3,3 +3,4 @@
 hp_max = 20;
 hp = hp_max;
 contact_damage = 1;
+is_dashing = false;

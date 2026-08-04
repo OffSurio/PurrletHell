@@ -9,7 +9,14 @@ wave_delay_timer = 90; //pequeno intervalo antes da 1ª wave
 in_between_waves = true;
 
 // Lista de tipos de inimigo disponíveis pra sortear no spawn.
-enemy_types = [obj_enemy_alface, obj_enemy_tomate];
+function get_available_enemy_types(){
+    var _types = [obj_enemy_alface];
+
+    if (wave_number >= 6)  array_push(_types, obj_enemy_tomate);
+    if (wave_number >= 15) array_push(_types, obj_enemy_pepino);
+
+    return _types;
+}
 randomise();
 
 function start_next_wave(){
@@ -47,7 +54,8 @@ while (!_posicao_valida && _tentativas < 50){
 	_tentativas++;
 	
 	if (_posicao_valida){
-    var _type = enemy_types[irandom(array_length(enemy_types) - 1)];
+    var _available = get_available_enemy_types();
+	var _type = _available[irandom(array_length(_available) - 1)];
     instance_create_layer(_sx, _sy, "Instances", _type);
 
     enemies_alive++;

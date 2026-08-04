@@ -14,8 +14,8 @@ if (_outro != noone){
 	y += lengthdir_y(0.5, _dir);
 }
 
-if (state != "charge"){
-    image_angle = _dir_to_player;
+if (state != "charge") {
+    if (obj_player.x < x) { image_xscale = -1; } else { image_xscale = 1; } // muda a direçao do sprite
 }
 
 if (state == "chase"){

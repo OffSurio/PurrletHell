@@ -9,8 +9,8 @@
   "name":"obj_enemy_alface",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inimigos",
-    "path":"folders/Objects/Inimigos.yy",
+    "name":"alface",
+    "path":"folders/Objects/Inimigos/alface.yy",
   },
   "parentObjectId":{
     "name":"obj_enemy_parent",
