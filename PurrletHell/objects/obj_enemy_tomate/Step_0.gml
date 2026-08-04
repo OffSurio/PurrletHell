@@ -5,6 +5,15 @@ if (!instance_exists(obj_player)) exit;
 var _dist = point_distance(x, y, obj_player.x, obj_player.y);
 var _dir_to_player = point_direction(x, y, obj_player.x, obj_player.y);
 
+var _outro = instance_place(x,y,obj_enemy_parent);
+if (_outro != noone){
+	var _dir = point_direction(_outro.x, _outro.y, x, y);
+	
+	//move para longe
+	x += lengthdir_x(0.5,_dir);
+	y += lengthdir_y(0.5, _dir);
+}
+
 if (state != "charge"){
     image_angle = _dir_to_player;
 }

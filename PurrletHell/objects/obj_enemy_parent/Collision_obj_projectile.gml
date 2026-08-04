@@ -3,7 +3,7 @@
 hp -= other.damage;
 
 
-var _forca_recuo = 10; // força do knockback
+var _forca_recuo = 17; // força do knockback
 
 var _dir = point_direction(other.x, other.y, x, y);
 
