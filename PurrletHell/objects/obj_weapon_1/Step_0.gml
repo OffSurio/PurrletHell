@@ -14,7 +14,7 @@ if (instance_exists(obj_player)){
         fire_timer = 0;
         var _proj = instance_create_layer(x, y, "Instances", obj_projectile);
         _proj.direction = _dir;
-        _proj.speed = 8;
+        _proj.speed = 8.5;
         _proj.image_angle = _dir;
     }
 }

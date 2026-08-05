@@ -4,10 +4,10 @@ event_inherited();
 
 hp_max = 40; //vida média
 hp = hp_max;
-move_speed = 1; //lenta
+move_speed = 0.9; //lenta
 
-attack_range = 220; // distância pra parar e começar a carregar
-resume_chase_range = 260;
+attack_range = 240; // distância pra parar e começar a carregar
+resume_chase_range = 280;
 
 state = "chase"; 
 

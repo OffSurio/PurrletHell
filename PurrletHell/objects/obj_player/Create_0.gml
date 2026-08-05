@@ -3,14 +3,14 @@
 
 // Estamina
 stamina = global.stamina_max;
-stamina_drain_sprint = 0.5;
-stamina_dash_cost = 25;
+stamina_drain_sprint = 0.4;
+stamina_dash_cost = 22;
 stamina_exhausted = false;  // true quando zera só libera de novo ao encher 100%
 stamina_visible_timer = 0;
 
 // Movimento
-move_speed_walk = 2;
-move_speed_sprint = 4;
+move_speed_walk = 2.2;
+move_speed_sprint = 4.2;
 hsp = 0;
 vsp = 0;
 
@@ -18,7 +18,7 @@ vsp = 0;
 is_dashing = false;
 dash_timer = 0;
 dash_duration = 20;
-dash_speed = 10;
+dash_speed = 11;
 dash_direction = 0;
 dash_trail_timer = 0;
 

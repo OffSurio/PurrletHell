@@ -3,5 +3,6 @@
 global.vida_max = 3;
 global.vida = global.vida_max;
 global.stamina_max = 50;
-global.stamina_regen_rate = 0.4;
+global.stamina_regen_rate = 0.5;
 global.fire_rate = 0;
+global.wave_record = 0;

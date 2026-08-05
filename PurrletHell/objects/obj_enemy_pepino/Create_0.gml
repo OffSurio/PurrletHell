@@ -4,11 +4,11 @@ event_inherited();
 
 hp_max = 60;  // vida alta
 hp = hp_max;
-move_speed = 1.7;
+move_speed = 1.6;
 
-melee_range = 100;  // distância pro ataque giratório
+melee_range = 110;  // distância pro ataque giratório
 dash_trigger_range = 260; // distância pra carregar o avanço
-melee_hit_radius = 75;
+melee_hit_radius = 85;
 melee_damage = 1;
 
 state = "chase"; // chase
@@ -24,12 +24,12 @@ base_y = y;
 dash_charge_grow = 40; // frames crescendo
 dash_charge_hold = 10; // frames parado
 dash_charge_timer = 0;
-dash_visual_length = 270;
+dash_visual_length = 280;
 dash_direction = 0;
 
 // Dash
-dash_duration = 30;
-dash_speed = 9;
+dash_duration = 28;
+dash_speed = 10;
 dash_timer = 0;
 dash_has_hit = false;
 dash_damage = 1;

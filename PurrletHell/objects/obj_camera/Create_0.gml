@@ -1,7 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
-cam_width = 780;
-cam_height = 540;
+cam_width = 720;
+cam_height = 480;
+
+window_set_size(1440, 960);
+window_center();
+display_set_gui_size(1440, 960);
 
 cam = camera_create();
 camera_set_view_size(cam, cam_width, cam_height);

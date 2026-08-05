@@ -44,7 +44,7 @@ if (state == "chase"){
 
                 var _proj = instance_create_layer(x, y, "Instances", obj_enemy_projectile_alface);
                 _proj.direction = _dir_to_player;
-                _proj.speed = 3;
+                _proj.speed = 3.2;
                 _proj.image_angle = _dir_to_player;
             }
         }else if (burst_timer >= burst_cooldown){
