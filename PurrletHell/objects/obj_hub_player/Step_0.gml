@@ -2,6 +2,7 @@
 // You can write your code in this editor
 if (global.game_paused) exit;
 // Trava o player se algum painel estiver aberto
+if (instance_exists(obj_dialogue_controller) && obj_dialogue_controller.dialogue_active) exit;
 if (instance_exists(obj_hub_ui_controller) && obj_hub_ui_controller.current_panel != "none") exit;
 
 var _left  = keyboard_check(vk_left)  || keyboard_check(ord("A"));

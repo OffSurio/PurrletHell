@@ -26,19 +26,13 @@ if (current_panel == "skill_tree"){
     var _nao_x = _gui_w/2 + 60;
     var _opt_y = _panel_y + 150;
 
-    draw_text(_sim_x, _opt_y, "SIM");
-    draw_text(_nao_x, _opt_y, "NAO");
-
-    var _mx = device_mouse_x_to_gui(0);
-    var _my = device_mouse_y_to_gui(0);
-
-    if (mouse_check_button_pressed(mb_left)){
-        if (point_distance(_mx, _my, _sim_x, _opt_y) <= 30){
-            room_goto(Garden);
-        }else if (point_distance(_mx, _my, _nao_x, _opt_y) <= 30){
-            close_panel();
-        }
-    }
+    if (scr_draw_menu_button("SIM", _sim_x, _opt_y)){
+		room_goto(Garden);
+	}
+	if (scr_draw_menu_button("NÃO", _nao_x, _opt_y)){
+		close_panel();
+	}
+    
 
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);

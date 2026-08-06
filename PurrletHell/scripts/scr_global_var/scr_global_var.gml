@@ -9,3 +9,4 @@ global.wave_record = 0;
 global.coins = 0;
 global.coin_drop_chance = 0.2; // 20% de chance
 global.game_paused = false;
+global.tutorial_dialogue_seen = false;

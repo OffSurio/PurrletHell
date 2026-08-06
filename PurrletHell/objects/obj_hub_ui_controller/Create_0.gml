@@ -12,7 +12,7 @@ function close_panel(){
     current_panel = "none";
 }
 
-function draw_close_button(_gui_w, _gui_h){
+function draw_close_button(_gui_w, _gui_h) {
     var _bx = _gui_w - 40;
     var _by = 40;
     var _mx = device_mouse_x_to_gui(0);
@@ -20,7 +20,14 @@ function draw_close_button(_gui_w, _gui_h){
 
     draw_sprite(spr_close_x, 0, _bx, _by);
 
-    if (mouse_check_button_pressed(mb_left) && point_distance(_mx, _my, _bx, _by) <= 20){
+    var _half_w = sprite_get_width(spr_close_x) / 2;
+    var _half_h = sprite_get_height(spr_close_x) / 2;
+    var _padding = 6;
+
+    var _hover = (_mx >= _bx - _half_w - _padding && _mx <= _bx + _half_w + _padding &&
+                  _my >= _by - _half_h - _padding && _my <= _by + _half_h + _padding);
+
+    if (_hover && mouse_check_button_pressed(mb_left)) {
         close_panel();
     }
 }
