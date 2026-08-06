@@ -8,3 +8,4 @@ global.fire_rate = 0;
 global.wave_record = 0;
 global.coins = 0;
 global.coin_drop_chance = 0.2; // 20% de chance
+global.game_paused = false;

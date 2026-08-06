@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (global.game_paused) exit;
 if (instance_exists(obj_player)){
     var _target_x = obj_player.x - cam_width / 2;
     var _target_y = obj_player.y - cam_height / 2;

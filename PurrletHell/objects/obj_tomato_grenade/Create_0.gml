@@ -11,3 +11,4 @@ travel_timer = 0;
 peak_height = 60; // altura máxima do arco
 
 draw_offset_y = 0;
+saved_speed = 0;

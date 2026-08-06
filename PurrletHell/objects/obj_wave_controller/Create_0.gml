@@ -1,4 +1,5 @@
 /// @description Insert description here
+global.vida = global.vida_max;
 wave_number = 0;
 enemies_per_wave_base = 5;
 enemies_alive = 0;
@@ -22,6 +23,13 @@ spawn_timer = 0;
 spawn_interval = 1;
 spawn_window_pct = 0.7; // espalha spawn 70% do tempo da wave
 
+// Anuncio da wave
+wave_announce_elapsed = 0;
+wave_announce_active = false;
+wave_announce_fade_in = 20;
+wave_announce_hold = 70;
+wave_announce_fade_out = 30;
+
 function get_available_enemy_types(){
     var _types = [obj_enemy_alface];
     if (wave_number >= 6)  array_push(_types, obj_enemy_tomate);
@@ -43,6 +51,8 @@ randomise();
 
 function start_next_wave(){
     wave_number++;
+	wave_announce_elapsed = 0;
+	wave_announce_active = true;
 
     var _count = get_wave_enemy_count();
     enemies_pending_spawn = _count;
@@ -97,38 +107,13 @@ function spawn_enemy(){
     }
 }
 
-function reset_run(){
-    // Salva recorde antes de zerar
+function go_to_hub(){
+    // Salva recorde antes de trocar de room
     if (wave_number > global.wave_record){
         global.wave_record = wave_number;
     }
 
-    // Destroi tudo que estiver em campo
-    with (obj_enemy_parent)              instance_destroy();
-    with (obj_projectile)                instance_destroy();
-	with (obj_laser_beam)                instance_destroy();
-    with (obj_enemy_projectile_alface)   instance_destroy();
-    with (obj_tomato_grenade)            instance_destroy();
-    with (obj_tomato_puddle)             instance_destroy();
-    with (obj_tomato_puddle_projectile)  instance_destroy();
-	with (obj_coin)                      instance_destroy();
-
-    // Reseta o player
-    global.vida = global.vida_max;
-    obj_player.x = room_width / 2;
-    obj_player.y = room_height / 2;
-    global.stamina = global.stamina_max;
-    obj_player.invuln_timer = 0;
-
-    // Reseta wave/timer
-    wave_number = 0;
-    bonus_time = 0;
-    bonus_flash_timer = 0;
-    enemies_alive = 0;
-    enemies_pending_spawn = 0;
-    in_between_waves = true;
-    wave_delay_timer = 90;
-    is_game_over = false;
+    room_goto(rm_hub);
 }
 
 start_next_wave();

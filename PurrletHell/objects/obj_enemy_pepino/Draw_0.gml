@@ -28,17 +28,50 @@ if (state == "dash_charge"){
     draw_set_alpha(1);
     draw_set_color(c_white);
 }
-if (state == "melee_attack" && melee_timer > melee_windup) {
+if (state == "melee_attack" && melee_timer > melee_windup){
     var _spin_progress = (melee_timer - melee_windup) / spin_duration;
     var _sweep_angle = _spin_progress * 360;
-
-    draw_set_alpha(0.4);
-    draw_set_color(c_white);
-    draw_circle(x, y, melee_hit_radius, true); // contorno mostrando o alcance do golpe
-
-    var _end_x = x + lengthdir_x(melee_hit_radius, _sweep_angle);
-    var _end_y = y + lengthdir_y(melee_hit_radius, _sweep_angle);
-    draw_line_width(x, y, _end_x, _end_y, 4); // "ponteiro" girando, simulando a cabeça
+	
+	//area preenchida
+	draw_set_alpha(0.15);
+	draw_set_colour(c_red);
+	
+	var _fill_segments = 40;
+	draw_primitive_begin(pr_trianglefan);
+	draw_vertex(x,y);
+	for (var i = 0; i <= _fill_segments; i++){
+		var _ang = (i / _fill_segments) * _sweep_angle;
+		draw_vertex(x + lengthdir_x(melee_hit_radius, _ang), y + lengthdir_y(melee_hit_radius, _ang));
+	}
+	draw_primitive_end();
+	
+	//configuração do ring
+    draw_set_alpha(0.6);
+    draw_set_color(c_red);
+    
+	var _thickness = 10;
+	var _inner_r = melee_hit_radius - (_thickness / 2);
+	var _outer_r = melee_hit_radius + (_thickness / 2);
+	
+	var _segments = 40;
+	var _start_angle = 0;
+	
+	//desenhando o arco
+	draw_primitive_begin(pr_trianglestrip);
+	for (var i = 0; i <= _segments; i++){
+		var _ang = _start_angle + (i / _segments) * _sweep_angle;
+		
+		draw_vertex(x + lengthdir_x(_inner_r, _ang), y + lengthdir_y(_inner_r, _ang));
+		draw_vertex(x + lengthdir_x(_outer_r, _ang), y + lengthdir_y(_outer_r, _ang));
+	}
+	draw_primitive_end();
+	
+	//ponteiro
+	draw_set_alpha(0.9);
+	
+	var _end_x = x + lengthdir_x(melee_hit_radius, _sweep_angle);
+	var _end_y = y + lengthdir_y(melee_hit_radius, _sweep_angle);
+	draw_line_width(x,y, _end_x, _end_y, 4);
 
     draw_set_alpha(1);
     draw_set_color(c_white);

@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (global.game_paused) exit;
 scr_process_burn();
 if (!instance_exists(obj_player)) exit;
 
@@ -15,7 +16,7 @@ if (_outro != noone){
 	y += lengthdir_y(0.5, _dir);
 }
 
-if (state != "charge") {
+if (state != "charge"){
     if (obj_player.x < x) { image_xscale = -1; } else { image_xscale = 1; } // muda a direçao do sprite
 }
 

@@ -1,9 +1,17 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (global.game_paused) exit;
 if (!is_game_over && global.vida <= 0){
     is_game_over = true;
-    reset_run();
+    go_to_hub();
     exit;
+}
+
+if (wave_announce_active){
+    wave_announce_elapsed++;
+    if (wave_announce_elapsed >= wave_announce_fade_in + wave_announce_hold + wave_announce_fade_out){
+        wave_announce_active = false;
+    }
 }
 
 if (bonus_flash_timer > 0) bonus_flash_timer--;
@@ -33,6 +41,6 @@ if (in_between_waves){
     }else if (wave_timer <= 0){
         bonus_time = 0;
         is_game_over = true;
-        reset_run();
+        go_to_hub();
     }
 }

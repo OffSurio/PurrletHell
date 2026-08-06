@@ -25,11 +25,38 @@ if (instance_exists(obj_wave_controller)){
     draw_set_valign(fa_top);
     draw_set_color(c_white);
     draw_text(gui_w - 20, 20, "Wave: " + string(obj_wave_controller.wave_number));
-    draw_text(gui_w - 20, 44, "Record: " + string(global.wave_record));
+    draw_text(gui_w - 20, 44, "Record: Wave " + string(global.wave_record));
 	draw_text(gui_w - 20, 68, "Coins: " + string(global.coins));
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
+
+// Anunciando a proxima wave
+if (instance_exists(obj_wave_controller) && obj_wave_controller.wave_announce_active){
+    var _wc = obj_wave_controller;
+    var _t = _wc.wave_announce_elapsed;
+    var _alpha;
+
+    if (_t < _wc.wave_announce_fade_in){
+        _alpha = _t / _wc.wave_announce_fade_in;
+    }else if (_t < _wc.wave_announce_fade_in + _wc.wave_announce_hold){
+        _alpha = 1;
+    }else{
+        var _t2 = _t - _wc.wave_announce_fade_in - _wc.wave_announce_hold;
+        _alpha = 1 - (_t2 / _wc.wave_announce_fade_out);
+    }
+
+    draw_set_alpha(_alpha);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_white);
+    draw_text_transformed(gui_w/2, gui_h*0.2, "WAVE " + string(_wc.wave_number), 3, 3, 0);
+    draw_set_alpha(1);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}
+
+
 
 //timer
 if (instance_exists(obj_wave_controller)){

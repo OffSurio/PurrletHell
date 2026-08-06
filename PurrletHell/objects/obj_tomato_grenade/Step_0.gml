@@ -1,5 +1,17 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (global.game_paused){
+    if (speed != 0){
+        saved_speed = speed;
+        speed = 0;
+    }
+    exit;
+}
+
+if (saved_speed != 0){
+    speed = saved_speed;
+    saved_speed = 0;
+}
 travel_timer++;
 var _progress = clamp(travel_timer / travel_time, 0, 1);
 
@@ -15,7 +27,7 @@ draw_offset_y = -_height;
 image_xscale = 1 + (_height / peak_height) * 0.3;
 image_yscale = image_xscale;
 
-if (_progress >= 1) {
+if (_progress >= 1){
     instance_create_layer(target_x, target_y, "Instances", obj_tomato_puddle);
     instance_destroy();
 }

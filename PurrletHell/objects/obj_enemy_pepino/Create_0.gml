@@ -15,7 +15,7 @@ melee_damage = 1;
 state = "chase"; // chase
 
 // Ataque giratório (curto alcance)
-melee_windup = 12;
+melee_windup = 20;
 spin_duration = 24;  // duração do giro
 melee_shake_amount = 2;
 base_x = x;
