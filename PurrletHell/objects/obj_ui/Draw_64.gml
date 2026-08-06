@@ -18,7 +18,7 @@ for (var i = 0; i < global.vida_max; i++){
     }
 }
 
-//Desenhar numero da Wave atual + recorde
+//Desenhar numero da Wave atual + recorde + moedas
 if (instance_exists(obj_wave_controller)){
     draw_set_font(-1);
     draw_set_halign(fa_right);
@@ -26,6 +26,7 @@ if (instance_exists(obj_wave_controller)){
     draw_set_color(c_white);
     draw_text(gui_w - 20, 20, "Wave: " + string(obj_wave_controller.wave_number));
     draw_text(gui_w - 20, 44, "Record: " + string(global.wave_record));
+	draw_text(gui_w - 20, 68, "Coins: " + string(global.coins));
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }

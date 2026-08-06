@@ -6,8 +6,6 @@ if (invuln_timer > 0 && (invuln_timer div 4) % 2 == 0){
     draw_self();
 }
 
-draw_self();
-
 if (stamina_visible_timer > 0){
     var _pct = stamina / global.stamina_max;
     var _col = c_lime;

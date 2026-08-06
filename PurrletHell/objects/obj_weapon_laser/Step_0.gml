@@ -1,0 +1,51 @@
+/// @description Insert description here
+// You can write your code in this editor
+if (instance_exists(obj_player)){
+    var _dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
+    image_angle = _dir;
+
+    x = obj_player.x + lengthdir_x(offset, _dir);
+    y = obj_player.y + lengthdir_y(offset, _dir);
+
+    fire_timer++;
+    if (fire_timer >= fire_rate){
+        fire_timer = 0;
+        fire_laser(_dir);
+    }
+}
+
+function fire_laser(_dir){
+    var _end_x = obj_player.x + lengthdir_x(laser_length, _dir);
+    var _end_y = obj_player.y + lengthdir_y(laser_length, _dir);
+
+    var _list = ds_list_create();
+    var _count = collision_line_list(obj_player.x, obj_player.y, _end_x, _end_y, obj_enemy_parent, true, true, _list, false);
+
+    for (var i = 0; i < _count; i++){
+        var _enemy = _list[| i];
+
+        with (_enemy){
+            hp -= other.laser_damage;
+
+            burn_active = true;
+            burn_ticks_remaining = other.burn_tick_count;
+            burn_tick_timer = other.burn_tick_interval;
+            burn_damage_per_tick = other.burn_damage_per_tick;
+
+            if (hp <= 0){
+                if (random(1) <= global.coin_drop_chance){
+                    var _amount = irandom_range(coin_value_min, coin_value_max);
+                    var _coin = instance_create_layer(x, y, "Instances", obj_coin);
+                    _coin.value = _amount;
+                }
+                instance_destroy();
+            }
+        }
+    }
+
+    ds_list_destroy(_list);
+
+    var _beam = instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_laser_beam);
+    _beam.end_x = _end_x;
+    _beam.end_y = _end_y;
+}

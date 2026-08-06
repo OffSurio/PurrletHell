@@ -106,10 +106,12 @@ function reset_run(){
     // Destroi tudo que estiver em campo
     with (obj_enemy_parent)              instance_destroy();
     with (obj_projectile)                instance_destroy();
+	with (obj_laser_beam)                instance_destroy();
     with (obj_enemy_projectile_alface)   instance_destroy();
     with (obj_tomato_grenade)            instance_destroy();
     with (obj_tomato_puddle)             instance_destroy();
     with (obj_tomato_puddle_projectile)  instance_destroy();
+	with (obj_coin)                      instance_destroy();
 
     // Reseta o player
     global.vida = global.vida_max;

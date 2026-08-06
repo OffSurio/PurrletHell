@@ -77,7 +77,7 @@ if (is_dashing){
     }
 }
 
-//Regeneração
+//Regeneração estamina
 var _using_stamina = is_dashing || (keyboard_check(vk_shift) && _moving && !stamina_exhausted && stamina > 0);
 
 if (!_using_stamina && stamina < global.stamina_max){

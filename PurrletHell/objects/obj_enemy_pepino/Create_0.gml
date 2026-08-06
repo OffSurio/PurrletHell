@@ -1,8 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 event_inherited();
-
-hp_max = 60;  // vida alta
+coin_value_min = 5;
+coin_value_max = 15;
+hp_max = 60; // vida alta
 hp = hp_max;
 move_speed = 1.6;
 

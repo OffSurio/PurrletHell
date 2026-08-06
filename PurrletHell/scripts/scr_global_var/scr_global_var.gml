@@ -6,3 +6,5 @@ global.stamina_max = 50;
 global.stamina_regen_rate = 0.5;
 global.fire_rate = 0;
 global.wave_record = 0;
+global.coins = 0;
+global.coin_drop_chance = 0.2; // 20% de chance

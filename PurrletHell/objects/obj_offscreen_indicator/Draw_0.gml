@@ -8,7 +8,7 @@ var _view_top    = _cam.cam_y + edge_margin;
 var _view_right  = _cam.cam_x + _cam.cam_width  - edge_margin;
 var _view_bottom = _cam.cam_y + _cam.cam_height - edge_margin;
 
-var _show = (blink_timer div 20) % 2 == 0; // liga/desliga a cada ~0.33s
+var _show = (blink_timer div 20) % 2 == 0; // liga/desliga o tracker
 
 if (_show){
     with (obj_enemy_parent){

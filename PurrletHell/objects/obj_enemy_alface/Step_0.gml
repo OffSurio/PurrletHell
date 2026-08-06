@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+scr_process_burn();
 if (!instance_exists(obj_player)) exit;
 
 var _dist = point_distance(x, y, obj_player.x, obj_player.y);

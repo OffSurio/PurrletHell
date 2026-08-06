@@ -14,7 +14,7 @@ if (state == "dash_charge"){
         }else{
             _col = merge_color(c_orange, c_red, (_pct - 0.5) * 2);
         }
-    } else {
+    }else{
         _length = dash_visual_length; // segura no máximo durante o "hold" vermelho
         _col = c_red;
     }
@@ -43,3 +43,4 @@ if (state == "melee_attack" && melee_timer > melee_windup) {
     draw_set_alpha(1);
     draw_set_color(c_white);
 }
+scr_draw_burn_overlay();

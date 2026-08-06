@@ -9,8 +9,8 @@
   "name":"obj_projectile",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Objects/Player.yy",
+    "name":"armas",
+    "path":"folders/Objects/Player/armas.yy",
   },
   "parentObjectId":null,
   "persistent":false,
