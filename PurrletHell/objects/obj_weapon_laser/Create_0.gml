@@ -11,3 +11,7 @@ laser_damage = 15; // dano alto no impacto direto
 burn_damage_per_tick = 5; // dano de queimadura por tick
 burn_tick_count = 3; // número de ticks
 burn_tick_interval = 30;
+
+laser_damage_true = 22;
+burn_damage_per_tick_true = 8;
+fire_rate_true = 60;

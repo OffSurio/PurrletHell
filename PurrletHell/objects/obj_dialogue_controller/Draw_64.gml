@@ -25,7 +25,7 @@ var _cur_y = _text_y;
 var _line_height = 38; // ajusta conforme o tamanho da fonte escolhida
 var _break_ptr = 1;
 
-for (var i = 0; i < char_index; i++) {
+for (var i = 0; i < char_index; i++){
     if (_break_ptr < array_length(line_breaks) && i == line_breaks[_break_ptr]) {
         _cursor_x = _text_x;
         _cur_y += _line_height;
@@ -55,7 +55,7 @@ for (var i = 0; i < char_index; i++) {
     var _char_h = string_height("A"); // altura de referência da fonte atual
 
 	var _is_last_gold_char = _entry.gold && (i == char_index - 1 || !parsed_line[i+1].gold);
-	if (_is_last_gold_char) {
+	if (_is_last_gold_char){
 		draw_sprite_ext(spr_coin, 0, _cursor_x + icon_reserved_width/2, _draw_y + (_char_h / 2), 0.6, 0.6, 0, c_white, 1);
 		_cursor_x += icon_reserved_width;
 	}
@@ -63,7 +63,7 @@ for (var i = 0; i < char_index; i++) {
 
 draw_set_color(c_white);
 
-if (line_finished) {
+if (line_finished){
     draw_set_halign(fa_left);
     draw_set_color(c_gray);
     draw_text_transformed(_box_x + 20, _box_y + _box_h - 42, "SPACE para continuar", 0.75, 0.75, 0);

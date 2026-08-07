@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 if (!variable_global_exists("equipped_weapon")){
-    global.equipped_weapon = obj_weapon_claws;
+    global.equipped_weapon = obj_weapon_pistol;
 }
 current_instance = noone;
 

@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (!variable_instance_exists(id, "is_dashing")) is_dashing = false;
 hp_max = 20;
 hp = hp_max;
 contact_damage = 1;

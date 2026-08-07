@@ -3,9 +3,12 @@
 cam_width  = 500;
 cam_height = 280;
 
-window_set_size(1440, 960);
-window_center();
-display_set_gui_size(1440, 960);
+if (!global.window_initialized) {
+    window_set_size(1440, 960);
+    window_center();
+    display_set_gui_size(1440, 960);
+    global.window_initialized = true;
+}
 
 cam = camera_create();
 camera_set_view_size(cam, cam_width, cam_height);
