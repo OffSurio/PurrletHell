@@ -13,12 +13,13 @@ if (instance_exists(obj_player)){
 
     fire_timer++;
     if (fire_timer >= _fire_rate){
-        fire_timer = 0;
-        var _proj = instance_create_layer(x, y, "Instances", obj_projectile);
-        _proj.direction = _dir;
-        _proj.speed = 8.5;
-        _proj.image_angle = _dir;
-        _proj.damage = _true_form ? true_damage : base_damage;
-        _proj.max_bounces = _true_form ? 2 : 0;
-    }
+		fire_timer = 0;
+		var _proj = instance_create_layer(x, y, "Instances", obj_projectile);
+		_proj.direction = _dir;
+		_proj.speed = 8.5;
+		_proj.image_angle = _dir;
+		_proj.damage = _true_form ? true_damage : base_damage;
+		_proj.max_bounces = _true_form ? 2 : 0;
+		_proj.lifetime = _true_form ? proj_lifetime_true : proj_lifetime; // <- essa linha estava faltando
+}
 }

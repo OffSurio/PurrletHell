@@ -13,7 +13,6 @@ if (instance_exists(obj_player)){
 		fire_timer = 0;
 		var _true_form = global.weapon_claws_true_form;
 		var _dmg = _true_form ? claw_damage_true : claw_damage;
-		show_debug_message("true_form: " + string(_true_form) + " | dmg calculado: " + string(_dmg) + " | claw_damage: " + string(claw_damage) + " | claw_damage_true: " + string(claw_damage_true));
 		var _kb = _true_form ? claw_knockback_true : claw_knockback;
 		var _life = _true_form ? claw_lifetime_true : claw_lifetime;
 

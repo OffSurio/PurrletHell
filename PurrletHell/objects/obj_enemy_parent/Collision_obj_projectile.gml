@@ -10,11 +10,13 @@ if (_already_hit) exit;
 
 	hp -= other.damage;
 
-var _dir = point_direction(other.x, other.y, x, y);
-var _new_x = x + lengthdir_x(10, _dir);
-var _new_y = y + lengthdir_y(10, _dir);
-if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
-if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;
+if (!is_dashing) {
+    var _dir = point_direction(other.x, other.y, x, y);
+    var _new_x = x + lengthdir_x(10, _dir);
+    var _new_y = y + lengthdir_y(10, _dir);
+    if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
+    if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;
+}
 
 if (hp <= 0){
     if (random(1) <= global.coin_drop_chance){
@@ -32,13 +34,6 @@ if (other.max_bounces > 0 && array_length(other.hit_ids) <= other.max_bounces){
         other.image_angle = other.direction;
         exit; // não destrói segue ricocheteando
     }
-}
-
-if (!is_dashing) {
-    var _new_x = x + lengthdir_x(10, _dir);
-    var _new_y = y + lengthdir_y(10, _dir);
-    if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
-    if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;
 }
 
 instance_destroy(other);

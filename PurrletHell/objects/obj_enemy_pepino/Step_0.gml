@@ -103,4 +103,3 @@ if (state == "chase"){
         state = "chase";
     }
 }
-show_debug_message("dist: " + string(_dist) + " | melee_range: " + string(melee_range));

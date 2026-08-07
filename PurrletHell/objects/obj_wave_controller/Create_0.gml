@@ -11,7 +11,7 @@ is_game_over = false;
 // Timer da wave
 wave_time_base = 1200; //20 segundo
 wave_time_growth_per_step = 180; //+3s por degrau
-wave_time_growth_step_waves = 10; //sobe um degrau a cada 5 waves
+wave_time_growth_step_waves = 5; //sobe um degrau a cada 5 waves
 wave_time_growth_cap_at_step = 6; // para de crescer depois da wave 30
 wave_time_current_base = 0; // valor base da wave atual
 bonus_time = 0; // tempo excedente
@@ -107,12 +107,10 @@ function spawn_enemy(){
     }
 }
 
-function go_to_hub(){
-    // Salva recorde antes de trocar de room
-    if (wave_number > global.wave_record){
+function go_to_hub(_reason){
+    if (wave_number > global.wave_record) {
         global.wave_record = wave_number;
     }
-
     room_goto(rm_hub);
 }
 

@@ -4,6 +4,8 @@
 true_fire_rate = 17;
 base_damage = 10;
 true_damage = 16;
+proj_lifetime = 45;
+proj_lifetime_true = 70;
 
 global.fire_rate = global.fire_rate+26; // frames entre tiros
 fire_timer = 0;

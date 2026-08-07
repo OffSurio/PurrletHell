@@ -5,12 +5,13 @@ if (ds_list_find_index(other.hit_list, id) == -1){
 
     hp -= other.damage;
 
-    var _dir = point_direction(other.x, other.y, x, y);
-	var _new_x = x + lengthdir_x(other.knockback_force, _dir);
-	var _new_y = y + lengthdir_y(other.knockback_force, _dir);
-
-	if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
-	if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;;
+    if (!is_dashing) {
+		var _dir = point_direction(other.x, other.y, x, y);
+		var _new_x = x + lengthdir_x(10, _dir);
+		var _new_y = y + lengthdir_y(10, _dir);
+		if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
+		if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;
+}
 
     if (hp <= 0){
         if (random(1) <= global.coin_drop_chance){
@@ -20,10 +21,4 @@ if (ds_list_find_index(other.hit_list, id) == -1){
         }
         instance_destroy();
     }
-	if (!is_dashing) {
-		var _new_x = x + lengthdir_x(10, _dir);
-		var _new_y = y + lengthdir_y(10, _dir);
-		if (!place_meeting(_new_x, y, obj_wall)) x = _new_x;
-		if (!place_meeting(x, _new_y, obj_wall)) y = _new_y;
-	}
 }

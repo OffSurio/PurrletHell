@@ -3,7 +3,7 @@
 if (global.game_paused) exit;
 if (!is_game_over && global.vida <= 0){
     is_game_over = true;
-    go_to_hub();
+    go_to_hub("vida zerada");
     exit;
 }
 
@@ -39,8 +39,8 @@ if (in_between_waves){
         in_between_waves = true;
         wave_delay_timer = 90;
     }else if (wave_timer <= 0){
-        bonus_time = 0;
-        is_game_over = true;
-        go_to_hub();
-    }
+		bonus_time = 0;
+		is_game_over = true;
+		go_to_hub("tempo esgotado");
+	}
 }

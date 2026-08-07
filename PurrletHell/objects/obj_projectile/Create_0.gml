@@ -5,3 +5,4 @@ max_bounces = 0;
 hit_ids = [];
 ricochet_range = 180;
 saved_speed = 0;
+lifetime = 45;
