@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-fire_rate = 90; // cadência lenta
+fire_rate = 40; // cadência lenta
 fire_timer = 0;
 offset = 8;
 
@@ -14,4 +14,4 @@ burn_tick_interval = 30;
 
 laser_damage_true = 22;
 burn_damage_per_tick_true = 8;
-fire_rate_true = 60;
+fire_rate_true = 40;

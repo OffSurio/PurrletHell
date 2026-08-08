@@ -2,8 +2,8 @@
 // You can write your code in this editor
 event_inherited(); // pega variaveis do parent
 randomize();
-coin_value_min = 1;
-coin_value_max = 5;
+coin_value_min = 3;
+coin_value_max = 8;
 hp_max = 30; // vida baixa
 hp = hp_max;
 move_speed = 1.3; // velocidade média

@@ -33,13 +33,13 @@ wave_announce_fade_out = 30;
 function get_available_enemy_types(){
     var _types = [obj_enemy_alface];
     if (wave_number >= 6)  array_push(_types, obj_enemy_tomate);
-    if (wave_number >= 15) array_push(_types, obj_enemy_pepino);
+    if (wave_number >= 10) array_push(_types, obj_enemy_pepino);
     return _types;
 }
 
 function get_wave_enemy_count(){
     var _count = enemies_per_wave_base + floor((wave_number - 1) * 1.2);
-    return min(_count, 25);
+    return min(_count, 80);
 }
 
 function get_wave_time_base(){
@@ -109,6 +109,9 @@ function spawn_enemy(){
 }
 
 function go_to_hub(_reason){
+	global.fire_rate_boost_active = false;
+    global.fire_rate_boost_timer = 0;
+    global.kill_streak_count = 0;
     if (wave_number > global.wave_record){
         global.wave_record = wave_number;
     }

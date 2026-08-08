@@ -62,7 +62,7 @@ if (is_dashing){
         if (!_already){
             array_push(dash_hit_ids, _hit);
             with (_hit){
-                hp -= 5;
+                hp -= dash_damage;
                 if (hp <= 0) scr_on_enemy_death();
             }
         }

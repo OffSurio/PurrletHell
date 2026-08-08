@@ -2,7 +2,7 @@
 // You can write your code in this editor
 if (global.game_paused) exit;
 
-var _base_fire_rate = global.weapon_laser_true_form ? fire_rate_true : 90;
+var _base_fire_rate = global.weapon_laser_true_form ? fire_rate_true : 65;
 fire_rate = global.fire_rate_boost_active ? round(_base_fire_rate * 0.5) : _base_fire_rate;
 
 if (instance_exists(obj_player)){

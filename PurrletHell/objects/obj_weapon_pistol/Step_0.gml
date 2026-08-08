@@ -21,6 +21,6 @@ if (instance_exists(obj_player)){
 		_proj.image_angle = _dir;
 		_proj.damage = (_true_form ? true_damage : base_damage) * scr_get_damage_multiplier();
 		_proj.max_bounces = _true_form ? 2 : 0;
-		_proj.lifetime = _true_form ? proj_lifetime_true : proj_lifetime; // <- essa linha estava faltando
+		_proj.lifetime = _true_form ? proj_lifetime_true : proj_lifetime;
 }
 }
