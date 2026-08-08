@@ -1,7 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 if (global.game_paused) exit;
-fire_rate = global.weapon_laser_true_form ? fire_rate_true : 90;
+
+var _base_fire_rate = global.weapon_laser_true_form ? fire_rate_true : 90;
+fire_rate = global.fire_rate_boost_active ? round(_base_fire_rate * 0.5) : _base_fire_rate;
+
 if (instance_exists(obj_player)){
     var _dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
     image_angle = _dir;
@@ -31,14 +34,9 @@ function fire_laser_beam(_dir, _dmg, _burn_dmg){
             burn_tick_timer = other.burn_tick_interval;
             burn_damage_per_tick = _burn_dmg;
 
-            if (hp <= 0){
-                if (random(1) <= global.coin_drop_chance){
-                    var _amount = irandom_range(coin_value_min, coin_value_max);
-                    var _coin = instance_create_layer(x, y, "Instances", obj_coin);
-                    _coin.value = _amount;
-                }
-                instance_destroy();
-            }
+            if (hp <= 0) {
+				scr_on_enemy_death();
+			}
         }
     }
     ds_list_destroy(_list);
@@ -50,7 +48,7 @@ function fire_laser_beam(_dir, _dmg, _burn_dmg){
 
 function fire_laser(_dir){
     var _true_form = global.weapon_laser_true_form;
-    var _dmg = _true_form ? laser_damage_true : laser_damage;
+    var _dmg = (_true_form ? laser_damage_true : laser_damage) * scr_get_damage_multiplier();
     var _burn_dmg = _true_form ? burn_damage_per_tick_true : burn_damage_per_tick;
 
     fire_laser_beam(_dir, _dmg, _burn_dmg);

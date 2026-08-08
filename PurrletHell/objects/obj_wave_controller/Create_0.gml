@@ -10,7 +10,7 @@ is_game_over = false;
 
 // Timer da wave
 wave_time_base = 1200; //20 segundo
-wave_time_growth_per_step = 180; //+3s por degrau
+wave_time_growth_per_step = 500; //+5s por degrau
 wave_time_growth_step_waves = 5; //sobe um degrau a cada 5 waves
 wave_time_growth_cap_at_step = 6; // para de crescer depois da wave 30
 wave_time_current_base = 0; // valor base da wave atual
@@ -44,7 +44,8 @@ function get_wave_enemy_count(){
 
 function get_wave_time_base(){
     var _steps = min(floor((wave_number - 1) / wave_time_growth_step_waves), wave_time_growth_cap_at_step);
-    return wave_time_base + (_steps * wave_time_growth_per_step);
+    return wave_time_base + (_steps * wave_time_growth_per_step) + global.wave_time_bonus;
+	
 }
 
 randomise();
@@ -108,7 +109,7 @@ function spawn_enemy(){
 }
 
 function go_to_hub(_reason){
-    if (wave_number > global.wave_record) {
+    if (wave_number > global.wave_record){
         global.wave_record = wave_number;
     }
     room_goto(rm_hub);

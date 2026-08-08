@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Hub",
-    "path":"folders/Sprites/Hub.yy",
+    "name":"Arvore de Habilidade",
+    "path":"folders/Sprites/Hub/Arvore de Habilidade.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

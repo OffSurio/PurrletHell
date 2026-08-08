@@ -21,6 +21,7 @@ dash_duration = 20;
 dash_speed = 11;
 dash_direction = 0;
 dash_trail_timer = 0;
+dash_hit_ids = [];
 
 //imunidade
 invuln_timer = 0;

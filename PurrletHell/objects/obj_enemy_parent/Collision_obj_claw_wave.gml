@@ -14,11 +14,6 @@ if (ds_list_find_index(other.hit_list, id) == -1){
 }
 
     if (hp <= 0){
-        if (random(1) <= global.coin_drop_chance){
-            var _amount = irandom_range(coin_value_min, coin_value_max);
-            var _coin = instance_create_layer(x, y, "Instances", obj_coin);
-            _coin.value = _amount;
-        }
-        instance_destroy();
-    }
+		scr_on_enemy_death();
+	}
 }

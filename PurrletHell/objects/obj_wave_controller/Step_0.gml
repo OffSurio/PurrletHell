@@ -7,6 +7,11 @@ if (!is_game_over && global.vida <= 0){
     exit;
 }
 
+if (global.fire_rate_boost_timer > 0){
+    global.fire_rate_boost_timer--;
+    if (global.fire_rate_boost_timer <= 0) global.fire_rate_boost_active = false;
+}
+
 if (wave_announce_active){
     wave_announce_elapsed++;
     if (wave_announce_elapsed >= wave_announce_fade_in + wave_announce_hold + wave_announce_fade_out){

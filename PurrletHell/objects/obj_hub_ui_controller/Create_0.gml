@@ -3,10 +3,15 @@
 current_panel = "none"; //
 ignore_close_timer = 0;
 
-tooltip_name_y = 600;
-tooltip_divider_y = 656;
-tooltip_desc_y = 672;
-tooltip_price_y = 780;
+tooltip_name_y = 700;
+tooltip_divider_y = 766;
+tooltip_desc_y = 782;
+tooltip_price_y = 890;
+tree_y_offset = -250; // valor negativo sobe a árvore
+
+function get_skill_item_y(_item){
+    return _item.y + tree_y_offset;
+}
 
 function open_panel(_panel){
     current_panel = _panel;
@@ -72,7 +77,7 @@ shop_items = [
 tree_box_size = 150;
 tree_spacing_x = 280;
 tree_base_y = 420;
-tree_middle_offset = 60; //coluna do meio
+tree_middle_offset = 60;
 tree_branch_height = 220;
 shop_hovered_item = -1;
 
@@ -104,9 +109,119 @@ function get_shop_item_state(_item){
     return (_prereq_met && _affordable) ? "purchasable" : "locked";
 }
 
-function get_weapon_object_from_key(_key) {
+function get_weapon_object_from_key(_key){
     if (_key == "pistol") return obj_weapon_pistol;
     if (_key == "laser") return obj_weapon_laser;
     if (_key == "claws") return obj_weapon_claws;
     return noone;
+}
+
+skill_box_radius = 45;
+skill_hovered_item = -1;
+
+skill_items = [
+    //ATAQUE
+    { id: "atk_explode", name: "Explosão Zumbi", description: "Inimigos explodem ao morrer e lançam projeteis",
+      price: 50, tree: "ataque", x: 288, y: 820, requires: "",
+      icon_sprite: spr_skill_icon_atk, icon_index: 0 },
+
+    { id: "atk_speed7", name: "Fúria de Caça", description: "Ao matar 15 inimigos garante velocidade de ataque por 7 segundos!!",
+      price: 150, tree: "ataque", x: 288, y: 690, requires: "atk_explode",
+      icon_sprite: spr_skill_icon_atk, icon_index: 1 },
+
+    { id: "atk_dash_dmg", name: "Investida Afiada", description: "Arranha inimigos durante o Dash.",
+      price: 250, tree: "ataque", x: 198, y: 560, requires: "atk_speed7",
+      icon_sprite: spr_skill_icon_atk, icon_index: 2 },
+
+    { id: "atk_speed10", name: "Fúria Prolongada", description: "Seu bonus de FÚRIA DA CAÇA é aumentado para 10 segundos",
+      price: 250, tree: "ataque", x: 378, y: 560, requires: "atk_speed7",
+      icon_sprite: spr_skill_icon_atk, icon_index: 3 },
+
+    { id: "atk_dmg1", name: "Munição Reforçada", description: "Todas suas armas ganham dano adicional.",
+      price: 380, tree: "ataque", x: 198, y: 430, requires: "atk_dash_dmg",
+      icon_sprite: spr_skill_icon_atk, icon_index: 4 },
+
+    { id: "atk_dmg2", name: "Munição Reforçada II", description: "Todas suas armas ganham dano adicional.",
+      price: 380, tree: "ataque", x: 378, y: 430, requires: "atk_speed10",
+      icon_sprite: spr_skill_icon_atk, icon_index: 4 },
+
+    // SAÚDE
+    { id: "hp_1", name: "Vida Extra", description: "Garante +1 Coração.",
+      price: 50, tree: "saude", x: 720, y: 820, requires: "",
+      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+
+    { id: "hp_2", name: "Vida Extra II", description: "Garante +1 Coração de novo.",
+      price: 150, tree: "saude", x: 720, y: 690, requires: "hp_1",
+      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+
+    { id: "sau_time", name: "Efeito Borboleta.", description: "Garante mais tempo no timer.",
+      price: 250, tree: "saude", x: 590, y: 560, requires: "hp_2",
+      icon_sprite: spr_skill_icon_time, icon_index: 0 },
+
+    { id: "hp_3", name: "Vida Extra III", description: "Acho que o programador estava com preguiça... Miau.",
+      price: 250, tree: "saude", x: 720, y: 560, requires: "hp_2",
+      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+
+    { id: "hp_4", name: "Vida Extra IV", description: "Que gato é esse que não tinha 7 vidas?",
+      price: 380, tree: "saude", x: 720, y: 430, requires: "hp_3",
+      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+
+    { id: "sau_stamina1", name: "Fôlego Felino", description: "Aumento na sua quantidade maxima de estamina.",
+      price: 150, tree: "saude", x: 850, y: 690, requires: "hp_1",
+      icon_sprite: spr_skill_icon_stamina, icon_index: 0 },
+
+    { id: "sau_regen", name: "Recuperação Rápida", description: "Sua estamina recarrega mais rapido.",
+      price: 250, tree: "saude", x: 850, y: 560, requires: "sau_stamina1",
+      icon_sprite: spr_skill_icon_regen, icon_index: 0 },
+
+    { id: "sau_stamina2", name: "Fôlego Felino II", description: "Aumenta ainda mais sua quantidade maxima de estamina",
+      price: 380, tree: "saude", x: 850, y: 430, requires: "sau_regen",
+      icon_sprite: spr_skill_icon_stamina, icon_index: 0 },
+
+    // ESPÓLIO
+    { id: "esp_heart", name: "Sorte do Gato", description: "Inimigos agora podem deixar cair corações.",
+      price: 50, tree: "espolio", x: 1152, y: 820, requires: "",
+      icon_sprite: spr_skill_icon_esp, icon_index: 0 },
+
+    { id: "esp_coin1", name: "Faro pra Novelo", description: "Aumenta a chance de inimigos abatidos concederem Novelos",
+      price: 150, tree: "espolio", x: 1152, y: 690, requires: "esp_heart",
+      icon_sprite: spr_skill_icon_esp, icon_index: 1 },
+
+    { id: "esp_extra_coins", name: "Bônus de Caça", description: "Inimigos deixam cair MAIS Novelos.",
+      price: 250, tree: "espolio", x: 1152, y: 560, requires: "esp_coin1",
+      icon_sprite: spr_skill_icon_esp, icon_index: 2 },
+
+    { id: "esp_coin2", name: "Faro pra Novelo II", description: "Aumenta a chance de inimigos abatidos concederem Novelos - parte 2.",
+      price: 380, tree: "espolio", x: 1152, y: 430, requires: "esp_extra_coins",
+      icon_sprite: spr_skill_icon_esp, icon_index: 1 },
+
+    { id: "esp_range1", name: "Braços Longos", description: "O range para coleta aumentou um pouco.",
+      price: 250, tree: "espolio", x: 1282, y: 560, requires: "esp_coin1",
+      icon_sprite: spr_skill_icon_esp, icon_index: 3 },
+
+    { id: "esp_range2", name: "Braços Longos II", description: "O range para coleta aumentou consideravelmente.",
+      price: 380, tree: "espolio", x: 1022, y: 430, requires: "esp_extra_coins",
+      icon_sprite: spr_skill_icon_esp, icon_index: 3 }
+];
+
+function get_skill_item_by_id(_id){
+    for (var i = 0; i < array_length(skill_items); i++){
+        if (skill_items[i].id == _id) return skill_items[i];
+    }
+    return noone;
+}
+
+function get_skill_item_state(_item){
+    var _owned = variable_global_get("skill_" + _item.id);
+    if (_owned) return "owned";
+
+    var _prereq_met = (_item.requires == "") || variable_global_get("skill_" + _item.requires);
+    var _affordable = global.coins >= _item.price;
+    return (_prereq_met && _affordable) ? "purchasable" : "locked";
+}
+
+function get_state_color(_state){
+    if (_state == "owned") return c_lime;
+    if (_state == "purchasable") return make_color_rgb(255, 215, 0);
+    return c_gray;
 }

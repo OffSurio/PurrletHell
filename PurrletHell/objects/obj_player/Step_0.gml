@@ -23,6 +23,7 @@ if (invuln_timer > 0) invuln_timer--;
 //Dash
 if (!is_dashing && keyboard_check_pressed(vk_space) && stamina >= stamina_dash_cost && !stamina_exhausted){
     is_dashing = true;
+	dash_hit_ids = [];
     dash_timer = 0;
     stamina -= stamina_dash_cost;
     if (stamina <= 0){ stamina = 0; stamina_exhausted = true;}
@@ -51,6 +52,22 @@ if (is_dashing){
     }
 
     if (dash_timer >= dash_duration) is_dashing = false;
+	if (global.skill_atk_dash_dmg){
+    var _hit = instance_place(x, y, obj_enemy_parent);
+    if (_hit != noone){
+        var _already = false;
+        for (var i = 0; i < array_length(dash_hit_ids); i++){
+            if (dash_hit_ids[i] == _hit) { _already = true; break; }
+        }
+        if (!_already){
+            array_push(dash_hit_ids, _hit);
+            with (_hit){
+                hp -= 5;
+                if (hp <= 0) scr_on_enemy_death();
+            }
+        }
+    }
+}
 
 }else{
     //Movimento normal/sprint
