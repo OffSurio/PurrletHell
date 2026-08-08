@@ -225,3 +225,5 @@ function get_state_color(_state){
     if (_state == "purchasable") return make_color_rgb(255, 215, 0);
     return c_gray;
 }
+
+scr_save_game();

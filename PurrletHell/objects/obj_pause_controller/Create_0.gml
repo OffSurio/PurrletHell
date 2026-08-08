@@ -15,10 +15,11 @@ function close_pause(){
     global.game_paused = false;
 }
 
-function go_to_main_menu() {
-    if (asset_get_index("rm_menu_inicial") != -1) {
+function go_to_main_menu(){
+	scr_save_game();
+    if (asset_get_index("rm_menu_inicial") != -1){
         room_goto(asset_get_index("rm_menu_inicial"));
-    } else {
+    }else{
         show_debug_message("nao criei ainda xd");
     }
 }
