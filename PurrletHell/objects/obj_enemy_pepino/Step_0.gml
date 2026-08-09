@@ -64,6 +64,7 @@ if (state == "chase"){
 }else if (state == "dash_charge"){
     dash_charge_timer++;
     if (dash_charge_timer >= dash_charge_grow + dash_charge_hold){
+		scr_play_sound(snd_dash_pepino, VOL_DASH_PEPINO);
         state = "dashing";
         dash_timer = 0;
         dash_has_hit = false;

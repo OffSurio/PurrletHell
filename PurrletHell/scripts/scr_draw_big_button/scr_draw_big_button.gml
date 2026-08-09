@@ -26,5 +26,9 @@ function scr_draw_big_button(_text, _cx, _cy, _base_w, _base_h){
     draw_set_valign(fa_top);
 	draw_set_font(-1);
 
-    return (_hover && mouse_check_button_pressed(mb_left));
+    if (_hover && mouse_check_button_pressed(mb_left)){
+		scr_play_sound(snd_button, VOL_BUTTON, 1.3);
+    return true;
+}
+return false;
 }

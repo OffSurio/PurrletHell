@@ -1,6 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_on_enemy_death(){
+	scr_play_sound(snd_enemy_death, VOL_ENEMY_DEATH);
     // Moeda (com bônus de espólio)
     if (random(1) <= global.coin_drop_chance){
         var _amount = irandom_range(coin_value_min, coin_value_max) + global.coin_bonus_flat;

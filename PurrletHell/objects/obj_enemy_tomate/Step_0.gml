@@ -23,6 +23,7 @@ if (state != "charge"){
 if (state == "chase"){
     if (_dist <= attack_range){
         state = "charge";
+		scr_play_sound(snd_tomato_charge, VOL_TOMATO_CHARGE);
         charge_timer = 0;
         base_x = x;
         base_y = y;
@@ -60,6 +61,7 @@ if (state == "chase"){
     if (attack_cooldown_timer >= attack_cooldown_duration){
         if (_dist > resume_chase_range){
             state = "chase";
+			scr_play_sound(snd_tomato_charge, VOL_TOMATO_CHARGE);
         }else{
             state = "charge";
             charge_timer = 0;

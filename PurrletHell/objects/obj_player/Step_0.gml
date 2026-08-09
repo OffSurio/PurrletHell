@@ -22,6 +22,7 @@ if (invuln_timer > 0) invuln_timer--;
 
 //Dash
 if (!is_dashing && keyboard_check_pressed(vk_space) && stamina >= stamina_dash_cost && !stamina_exhausted){
+	scr_play_sound(snd_dash_player, VOL_DASH_PLAYER);
     is_dashing = true;
 	dash_hit_ids = [];
     dash_timer = 0;

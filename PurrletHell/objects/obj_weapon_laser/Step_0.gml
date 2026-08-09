@@ -47,6 +47,7 @@ function fire_laser_beam(_dir, _dmg, _burn_dmg){
 }
 
 function fire_laser(_dir){
+	scr_play_sound(snd_laser, VOL_LASER,2);
     var _true_form = global.weapon_laser_true_form;
     var _dmg = (_true_form ? laser_damage_true : laser_damage) * scr_get_damage_multiplier();
     var _burn_dmg = _true_form ? burn_damage_per_tick_true : burn_damage_per_tick;

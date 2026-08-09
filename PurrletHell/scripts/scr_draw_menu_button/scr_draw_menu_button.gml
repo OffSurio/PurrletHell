@@ -19,5 +19,9 @@ function scr_draw_menu_button(_text, _x, _y){
     draw_set_color(c_white);
 	draw_set_font(-1);
 
-    return (_hover && mouse_check_button_pressed(mb_left));
+    if (_hover && mouse_check_button_pressed(mb_left)) {
+		scr_play_sound(snd_button, VOL_BUTTON, 1.3);
+		return true;
+	}
+	return false;
 }

@@ -19,6 +19,7 @@ y = obj_player.y;
 
 	fire_timer++;
 	if (fire_timer >= _fire_rate){
+		scr_play_sound(snd_cut, VOL_CUT);
 		fire_timer = 0;
 		var _true_form = global.weapon_claws_true_form;
 		var _dmg = (_true_form ? claw_damage_true : claw_damage) * scr_get_damage_multiplier();

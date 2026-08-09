@@ -20,6 +20,7 @@ if (instance_exists(obj_player)){
     fire_timer++;
     if (fire_timer >= _fire_rate){
 		fire_timer = 0;
+		scr_play_sound(snd_player_gun, VOL_PLAYER_GUN);
 		var _proj = instance_create_layer(x, y, "Instances", obj_projectile);
 		_proj.direction = _dir;
 		_proj.speed = 8.5;

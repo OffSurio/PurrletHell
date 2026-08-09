@@ -12,6 +12,7 @@ if (instance_exists(obj_player)) {
 
     if (_dist <= collect_radius) {
         global.coins += value;
+		scr_play_sound(snd_coin, VOL_COIN);
         instance_destroy();
     }
 }
