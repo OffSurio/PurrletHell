@@ -9,6 +9,7 @@ if (_already_hit) exit;
 	array_push(other.hit_ids, id);
 
 	hp -= other.damage;
+	scr_play_sound(snd_player_gun, VOL_PLAYER_GUN);
 
 if (!is_dashing) {
     var _dir = point_direction(other.x, other.y, x, y);

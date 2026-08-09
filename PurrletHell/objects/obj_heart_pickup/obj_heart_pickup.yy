@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_heart_1",
+    "path":"sprites/spr_heart_1/spr_heart_1.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

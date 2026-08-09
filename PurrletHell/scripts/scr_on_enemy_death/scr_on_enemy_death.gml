@@ -11,7 +11,7 @@ function scr_on_enemy_death(){
 
     // Coração (espólio)
     if (variable_global_exists("skill_esp_heart") && global.skill_esp_heart){
-        if (random(1) <= 0.05){
+        if (random(1) <= 0.08){
             instance_create_layer(x, y, "Instances", obj_heart_pickup);
         }
     }

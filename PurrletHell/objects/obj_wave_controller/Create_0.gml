@@ -67,6 +67,8 @@ function start_next_wave(){
     }
 
     wave_timer = wave_time_current_base + bonus_time;
+	
+	spawn_window_pct = random_range(0.6, 0.7);
 
     // Calcula o intervalo entre spawns, espalhando pelos primeiros 70% do tempo
     var _spawn_window = wave_timer * spawn_window_pct;
