@@ -95,6 +95,21 @@ if (is_dashing){
     }
 }
 
+if (mouse_x < x) { image_xscale = -1; } else { image_xscale = 1; }
+
+// Animação por estado
+if (is_dashing){
+    sprite_index = spr_player_walk;
+    image_speed = 0;
+    image_index = 2;
+}else if (_moving){
+    sprite_index = spr_player_walk;
+    image_speed = 1;
+}else{
+    sprite_index = spr_player;
+    image_speed = 1;
+}
+
 //Regeneração estamina
 var _using_stamina = is_dashing || (keyboard_check(vk_shift) && _moving && !stamina_exhausted && stamina > 0);
 

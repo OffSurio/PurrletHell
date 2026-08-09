@@ -3,8 +3,13 @@
 if (global.game_paused) exit;
 if (instance_exists(obj_player)){
     var _dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
-    image_angle = _dir;
+	image_angle = _dir;
 
+	image_xscale = weapon_scale;
+	image_yscale = (_dir > 90 && _dir < 270) ? -weapon_scale : weapon_scale;
+
+	x = obj_player.x + lengthdir_x(offset, _dir);
+	y = obj_player.y + lengthdir_y(offset, _dir);
     x = obj_player.x + lengthdir_x(offset, _dir);
     y = obj_player.y + lengthdir_y(offset, _dir);
 

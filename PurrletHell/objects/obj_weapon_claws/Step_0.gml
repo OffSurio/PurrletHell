@@ -3,10 +3,16 @@
 if (global.game_paused) exit;
 if (instance_exists(obj_player)){
     var _dir = point_direction(obj_player.x, obj_player.y, mouse_x, mouse_y);
-    image_angle = _dir;
 
-    x = obj_player.x + lengthdir_x(offset, _dir);
-    y = obj_player.y + lengthdir_y(offset, _dir);
+image_angle = 0;
+if (mouse_x < obj_player.x){
+    image_xscale = -1;
+    x = obj_player.x - offset;
+}else{
+    image_xscale = 1;
+    x = obj_player.x + offset;
+}
+y = obj_player.y;
 
     var _fire_rate = fire_rate;
 	if (global.fire_rate_boost_active) _fire_rate = round(_fire_rate * 0.5);

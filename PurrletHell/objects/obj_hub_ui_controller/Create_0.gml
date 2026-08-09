@@ -148,11 +148,11 @@ skill_items = [
     // SAÚDE
     { id: "hp_1", name: "Vida Extra", description: "Garante +1 Coração.",
       price: 50, tree: "saude", x: 720, y: 820, requires: "",
-      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+      icon_sprite: spr_heart_1, icon_index: 0 },
 
     { id: "hp_2", name: "Vida Extra II", description: "Garante +1 Coração de novo.",
       price: 150, tree: "saude", x: 720, y: 690, requires: "hp_1",
-      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+      icon_sprite: spr_heart_1, icon_index: 0 },
 
     { id: "sau_time", name: "Efeito Borboleta.", description: "Garante mais tempo no timer.",
       price: 250, tree: "saude", x: 590, y: 560, requires: "hp_2",
@@ -160,11 +160,11 @@ skill_items = [
 
     { id: "hp_3", name: "Vida Extra III", description: "Acho que o programador estava com preguiça... Miau.",
       price: 250, tree: "saude", x: 720, y: 560, requires: "hp_2",
-      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+      icon_sprite: spr_heart_1, icon_index: 0 },
 
     { id: "hp_4", name: "Vida Extra IV", description: "Que gato é esse que não tinha 7 vidas?",
       price: 380, tree: "saude", x: 720, y: 430, requires: "hp_3",
-      icon_sprite: spr_skill_icon_hp, icon_index: 0 },
+      icon_sprite: spr_heart_1, icon_index: 0 },
 
     { id: "sau_stamina1", name: "Fôlego Felino", description: "Aumento na sua quantidade maxima de estamina.",
       price: 150, tree: "saude", x: 850, y: 690, requires: "hp_1",

@@ -11,11 +11,13 @@ function scr_draw_menu_button(_text, _x, _y){
 
     var _scale = _hover ? 1.15 : 1.0;
 
+	draw_set_font(fnt_pause);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    draw_set_color(_hover ? c_yellow : c_white);
+    draw_set_color(_hover ? make_color_rgb(255, 140, 0) : c_black);
     draw_text_transformed(_x, _y, _text, _scale, _scale, 0);
     draw_set_color(c_white);
+	draw_set_font(-1);
 
     return (_hover && mouse_check_button_pressed(mb_left));
 }

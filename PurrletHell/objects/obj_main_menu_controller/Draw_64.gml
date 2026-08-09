@@ -27,28 +27,32 @@ if (!confirm_new_game_open){
 		game_end();
 	}
 }else{
-    var _panel_w = 500;
-    var _panel_h = 260;
-    var _panel_x = (_gui_w - _panel_w) / 2;
-    var _panel_y = (_gui_h - _panel_h) / 2;
+    var _panel_w = 840;
+	var _panel_h = 560;
+	var _panel_x = (_gui_w - _panel_w) / 2;
+	var _panel_y = (_gui_h - _panel_h) / 2;
 
-    draw_sprite_stretched(spr_panel_confirm_bg, 0, _panel_x, _panel_y, _panel_w, _panel_h);
+	draw_sprite_stretched(spr_panel_confirm_bg, 0, _panel_x, _panel_y, _panel_w, _panel_h);
 
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_white);
-    draw_text_ext(_gui_w/2, _panel_y + 60,
-        "Tem certeza que deseja iniciar um novo jogo?\nTodos os dados serão perdidos.",
-        -1, _panel_w - 60);
+	var _text_y = _panel_y + (_panel_h * PANEL_TEXT_Y_PCT);
+	var _button_y = _panel_y + (_panel_h * PANEL_BUTTON_Y_PCT);
 
-    if (scr_draw_menu_button("SIM", _gui_w/2 - 60, _panel_y + 170)){
-        scr_global_var();
-        scr_save_game();
-        room_goto(rm_hub);
-    }
-    if (scr_draw_menu_button("NÃO", _gui_w/2 + 60, _panel_y + 170)){
-        confirm_new_game_open = false;
-    }
+	draw_set_font(fnt_pause);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	draw_set_color(c_black);
+	draw_text_ext(_gui_w/2, _text_y, "Tem certeza que deseja iniciar um novo jogo?\nTodos os dados serão perdidos.", 45, _panel_w - 180);
+	draw_set_color(c_white);
+	draw_set_font(-1);
+
+	if (scr_draw_menu_button("SIM", _gui_w/2 - 120, _button_y)){
+	    scr_global_var();
+	    scr_save_game();
+	    room_goto(rm_hub);
+	}
+	if (scr_draw_menu_button("NÃO", _gui_w/2 + 120, _button_y)){
+	    confirm_new_game_open = false;
+	}
 
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);

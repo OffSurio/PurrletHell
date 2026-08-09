@@ -15,7 +15,8 @@ function scr_draw_big_button(_text, _cx, _cy, _base_w, _base_h){
 
     draw_set_color(_hover ? make_color_rgb(255, 215, 0) : c_white);
     draw_roundrect_ext(_cx - _w/2, _cy - _h/2, _cx + _w/2, _cy + _h/2, 16, 16, false);
-
+	
+	draw_set_font(fnt_menu);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(c_black);
@@ -23,6 +24,7 @@ function scr_draw_big_button(_text, _cx, _cy, _base_w, _base_h){
     draw_set_color(c_white);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
+	draw_set_font(-1);
 
     return (_hover && mouse_check_button_pressed(mb_left));
 }

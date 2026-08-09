@@ -11,10 +11,10 @@ var cor_y = gui_h - 180;
 for (var i = 0; i < global.vida_max; i++){
     var x_imagem = cor_x_inicial + (i * espacamento);
 
-    draw_sprite_ext(spr_heart, 0, x_imagem, cor_y,1.5,1.5,1,-1,0.5);
+    draw_sprite_ext(spr_heart, 0, x_imagem, cor_y,2.4,2.4,1,-1,0.5);
 
     if (i < global.vida){
-       draw_sprite_ext(spr_heart, 0, x_imagem, cor_y,1.5,1.5,1,-1,1);
+       draw_sprite_ext(spr_heart, 0, x_imagem, cor_y,2.4,2.4,1,-1,1);
     }
 }
 
@@ -24,9 +24,10 @@ if (instance_exists(obj_wave_controller)){
     draw_set_halign(fa_right);
     draw_set_valign(fa_top);
     draw_set_color(c_white);
-    draw_text(gui_w - 20, 20, "Wave: " + string(obj_wave_controller.wave_number));
-    draw_text(gui_w - 20, 44, "Record: Wave " + string(global.wave_record));
-	draw_text(gui_w - 20, 68, "Coins: " + string(global.coins));
+    draw_sprite(spr_coin, 0, 60, 60);
+    draw_text_transformed(130, 60, string(global.coins), 1.2, 1.2, 0);
+    draw_sprite_ext(spr_trophy, 0, 60, 150, 1.7, 1.7, 0, c_white, 1);
+    draw_text_transformed(160, 150, "WAVE " + string(global.wave_record), 1.2, 1.2, 0);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
@@ -49,11 +50,13 @@ if (instance_exists(obj_wave_controller) && obj_wave_controller.wave_announce_ac
     draw_set_alpha(_alpha);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
+	draw_set_font(fnt_wave);
     draw_set_color(c_white);
     draw_text_transformed(gui_w/2, gui_h*0.2, "WAVE " + string(_wc.wave_number), 3, 3, 0);
     draw_set_alpha(1);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
+	draw_set_font(-1);
 }
 
 
@@ -75,20 +78,21 @@ if (instance_exists(obj_wave_controller)){
         _col = c_white; // normal
     }
 
-    draw_set_font(-1);
+    draw_set_font(fnt_clock);
     draw_set_halign(fa_center);
     draw_set_valign(fa_top);
     draw_set_color(_col);
-    draw_text(gui_w / 2, 20, _time_str);
+    draw_text(gui_w / 2, 35, _time_str);
 
     // "+Tempo" piscando em azul
     if (_wc.bonus_flash_timer > 0 && (_wc.bonus_flash_timer div 6) % 2 == 0){
         var _bonus_seconds = ceil(_wc.bonus_flash_amount / room_speed);
         draw_set_color(c_aqua);
-        draw_text(gui_w / 2 + 55, 20, "+" + string(_bonus_seconds) + "s");
+        draw_text_transformed(gui_w / 2 + 107, 47, "+" + string(_bonus_seconds) + " sec", 0.5,0.5,1);
     }
 
     draw_set_color(c_white);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
+	draw_set_font(-1);
 }

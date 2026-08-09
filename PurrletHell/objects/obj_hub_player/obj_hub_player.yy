@@ -34,6 +34,9 @@
     "name":"spr_hub_player_idle",
     "path":"sprites/spr_hub_player_idle/spr_hub_player_idle.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_hub_player_idle",
+    "path":"sprites/spr_hub_player_idle/spr_hub_player_idle.yy",
+  },
   "visible":true,
 }

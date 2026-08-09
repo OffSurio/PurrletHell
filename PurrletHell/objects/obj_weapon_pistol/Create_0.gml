@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+weapon_scale = 0.5;
+
 true_fire_rate = 17;
 base_damage = 10;
 true_damage = 16;

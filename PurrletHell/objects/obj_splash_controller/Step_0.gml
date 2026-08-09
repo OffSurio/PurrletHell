@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+if (entry_fade_alpha > 0) entry_fade_alpha -= 0.05;
 switch (fade_state){
     case "in":
         alpha += fade_speed;

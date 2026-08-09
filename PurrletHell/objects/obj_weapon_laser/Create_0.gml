@@ -4,6 +4,9 @@ fire_rate = 40; // cadência lenta
 fire_timer = 0;
 offset = 8;
 
+image_xscale = 0.7;
+image_yscale = 0.7;
+
 laser_length = 600; 
 laser_thickness = 14;
 

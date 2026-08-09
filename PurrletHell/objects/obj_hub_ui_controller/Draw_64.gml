@@ -58,16 +58,22 @@ if (current_panel == "skill_tree"){ //ARVORE DE HABILIDADE
         var _hover = (point_distance(_mx, _my, _item.x, _iy) <= skill_box_radius);
         if (_hover) skill_hovered_item = i;
 
-        var _icon_color = (_state == "locked") ? c_gray : c_white;
-        var _icon_alpha = (_state == "locked") ? 0.5 : 1;
+        draw_set_alpha(0.60);
+		draw_set_color(c_black);
+		draw_circle(_item.x, _iy, skill_box_radius, false);
+		draw_set_alpha(1);
+
+        draw_set_color(get_state_color(_state));
+        scr_draw_circle_border(_item.x, _iy, skill_box_radius, 4);
+		
+		var _icon_color = (_state == "locked") ? c_gray : c_white;
+		var _icon_alpha = (_state == "locked") ? 0.80 : 1;
 
         draw_sprite_ext(_item.icon_sprite, _item.icon_index, _item.x, _iy,
             (skill_box_radius*2) / sprite_get_width(_item.icon_sprite),
             (skill_box_radius*2) / sprite_get_height(_item.icon_sprite),
             0, _icon_color, _icon_alpha);
 
-        draw_set_color(get_state_color(_state));
-        scr_draw_circle_border(_item.x, _iy, skill_box_radius, 4);
 
         if (_hover && mouse_check_button_pressed(mb_left) && _state == "purchasable"){
             global.coins -= _item.price;
@@ -87,12 +93,13 @@ if (current_panel == "skill_tree"){ //ARVORE DE HABILIDADE
         var _state = get_skill_item_state(_item);
         var _center_x = _gui_w / 2;
 
-        draw_set_font(fnt_shop);
+        draw_set_font(fnt_item_name);
         draw_set_halign(fa_center);
         draw_set_valign(fa_top);
         draw_set_color(make_color_rgb(255, 140, 0));
 		draw_text_transformed(_center_x, tooltip_name_y, _item.name, 1.3, 1.3, 0);
-
+		
+		draw_set_font(fnt_shop);
         draw_set_color(c_white);
         draw_text_ext(_center_x, tooltip_desc_y, _item.description, -1, 600);
 
@@ -158,9 +165,13 @@ if (current_panel == "skill_tree"){ //ARVORE DE HABILIDADE
                       _my >= _pos.y - _half && _my <= _pos.y + _half);
         if (_hover) shop_hovered_item = i;
 
-        var _icon_color = c_white;
-        var _icon_alpha = 1;
-        if (_state == "locked") { _icon_color = c_gray; _icon_alpha = 0.5; }
+        draw_set_alpha(0.60);
+		draw_set_color(c_black);
+		draw_rectangle(_pos.x - _half, _pos.y - _half, _pos.x + _half, _pos.y + _half, false);
+		draw_set_alpha(1);
+
+		var _icon_color = c_white;
+		var _icon_alpha = (_state == "locked") ? 0.80 : 1;
 
         draw_sprite_ext(_item.icon_sprite, 0, _pos.x, _pos.y,
             tree_box_size / sprite_get_width(_item.icon_sprite),
@@ -229,27 +240,29 @@ if (shop_hovered_item != -1){
 
     draw_close_button(_gui_w, _gui_h);
 }else if (current_panel == "confirm_door"){ //PORTA
-    var _panel_w = 400;
-    var _panel_h = 250;
-    var _panel_x = (_gui_w - _panel_w) / 2;
-    var _panel_y = (_gui_h - _panel_h) / 2;
+    var _panel_w = 600;
+	var _panel_h = 380;
+	var _panel_x = (_gui_w - _panel_w) / 2;
+	var _panel_y = (_gui_h - _panel_h) / 2;
 
-    draw_sprite_stretched(spr_panel_confirm_bg, 0, _panel_x, _panel_y, _panel_w, _panel_h);
+	draw_sprite_stretched(spr_panel_confirm_bg, 0, _panel_x, _panel_y, _panel_w, _panel_h);
 
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_white);
-    draw_text(_gui_w/2, _panel_y + 60, "Voce esta pronto pra ir?");
+	var _text_y = _panel_y + (_panel_h * PANEL_TEXT_Y_PCT);
+	var _button_y = _panel_y + (_panel_h * PANEL_BUTTON_Y_PCT);
 
-    var _sim_x = _gui_w/2 - 60;
-    var _nao_x = _gui_w/2 + 60;
-    var _opt_y = _panel_y + 150;
+	draw_set_font(fnt_pause);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	draw_set_color(c_black);
+	draw_text_ext(_gui_w/2, _text_y, "Você está pronto pra ir?", 45, _panel_w - 60);
+	draw_set_color(c_white);
+	draw_set_font(-1);
 
-    if (scr_draw_menu_button("SIM", _sim_x, _opt_y)){
-		room_goto(Garden);
+	if (scr_draw_menu_button("SIM", _gui_w/2 - 80, _button_y)){
+	    room_goto(Garden);
 	}
-	if (scr_draw_menu_button("NÃO", _nao_x, _opt_y)){
-		close_panel();
+	if (scr_draw_menu_button("NÃO", _gui_w/2 + 80, _button_y)){
+	    close_panel();
 	}
     
 
@@ -261,11 +274,11 @@ if (current_panel == "none"){
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
 
-    draw_sprite(spr_coin, 0, 50, 40);
-    draw_text_transformed(80, 40, string(global.coins), 1.2, 1.2, 0);
+    draw_sprite(spr_coin, 0, 60, 60);
+    draw_text_transformed(100, 80, string(global.coins), 1.2, 1.2, 0);
 
-    draw_sprite(spr_trophy, 0, 50, 100);
-    draw_text_transformed(80, 100, "WAVE " + string(global.wave_record), 1.2, 1.2, 0);
+    draw_sprite_ext(spr_trophy, 0, 60, 150, 1.7, 1.7, 0, c_white, 1);
+    draw_text_transformed(100, 150, "WAVE " + string(global.wave_record), 1.2, 1.2, 0);
 
     draw_set_color(c_white);
     draw_set_valign(fa_top);

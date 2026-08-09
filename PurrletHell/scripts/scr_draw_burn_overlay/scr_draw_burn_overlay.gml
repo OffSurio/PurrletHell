@@ -2,6 +2,6 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_draw_burn_overlay(){
     if (burn_active){
-        draw_sprite_ext(spr_fire, 0, x, y, 1, 1, 0, c_orange, 0.5);
+        draw_sprite_ext(spr_fire, 0, x, y, 1.8, 1.8, 0, c_orange, 0.7);
     }
 }

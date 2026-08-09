@@ -18,7 +18,7 @@ draw_sprite(spr_merchant_portrait, portrait_frame, _box_x + _box_w - 40, _box_y)
 
 draw_set_font(fnt_dialogue);
 
-var _text_x = _box_x + 40;
+var _text_x = _box_x + 50;
 var _text_y = _box_y + 40;
 var _cursor_x = _text_x;
 var _cur_y = _text_y;
@@ -65,8 +65,8 @@ draw_set_color(c_white);
 
 if (line_finished){
     draw_set_halign(fa_left);
-    draw_set_color(c_gray);
-    draw_text_transformed(_box_x + 20, _box_y + _box_h - 42, "SPACE para continuar", 0.75, 0.75, 0);
+    draw_set_color(c_white);
+    draw_text_transformed(_box_x + 50, _box_y + _box_h - 60, "SPACE para continuar", 0.75, 0.75, 0);
     draw_set_color(c_white);
 }
 
